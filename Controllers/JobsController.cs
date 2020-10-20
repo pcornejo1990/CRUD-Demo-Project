@@ -44,17 +44,32 @@ namespace CRUD_Demo_Project.Controllers
 
         // POST: Jobs/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(JobTableViewModel model)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    using (CrudJobDbEntities db = new CrudJobDbEntities())
+                    {
+                        var oJobsTable = new JobTable();
+                        oJobsTable.Job = model.Job;
+                        oJobsTable.JobTile = model.JobTile;
+                        oJobsTable.JobDescription = model.JobDescription;
+                        oJobsTable.FromDate = model.FromDate;
+                        oJobsTable.ToDate = model.ToDate;
 
-                return RedirectToAction("Index");
+                        db.JobTables.Add(oJobsTable);
+                        db.SaveChanges();
+                    }
+
+                    return Redirect("~/Jobs/Index");
+                }
+                return View(model);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                throw new Exception(ex.Message);
             }
         }
 

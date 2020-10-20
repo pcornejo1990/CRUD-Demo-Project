@@ -4,9 +4,14 @@
 }
 
 <h2>@ViewBag.Tile</h2>
-
-<div class = "row">
-    <div class = "col-md-5">
+<br />
+<br />
+<div class="row" style="text-align:left" ; padding:5px>
+    <a href="~/Jobs/Create" class="btn btn-primary">Create</a>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-5">
         <table class=" table">
             <tr>
                 <th>Job</th>
@@ -16,16 +21,20 @@
                 <th>To date</th>
             </tr>
             @foreach (var elements in Model)
-            { 
-        <tr>
-            <td>@elements.Job</td>
-            <td>@elements.JobTile</td>
-            <td>@elements.JobDescription</td>
-            <td>@elements.FromDate</td>
-            <td>@elements.ToDate</td>
-        </tr>           
+            {
+                <tr>
+                    <td>@elements.Job</td>
+                    <td>@elements.JobTile</td>
+                    <td>@elements.JobDescription</td>
+                    <td>@elements.FromDate</td>
+                    <td>@elements.ToDate</td>
+                </tr>
+
             }
         </table>
     </div>
 </div>
+
+
+
 

@@ -1,0 +1,45 @@
+﻿@model  CRUD_Demo_Project.Models.ViewModels.JobTableViewModel
+    @{
+        ViewBag.Title = "Create";
+    }
+
+    <h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "Jobs", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                @Html.LabelFor(d => d.Job)
+                @Html.TextBoxFor(d => d.Job, "", new { @class = "form-Control" })
+                @Html.ValidationMessageFor(d => d.Job, null, new { @class = "alert" })
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(d => d.JobTile)
+                @Html.TextBoxFor(d => d.JobTile, "", new { @class = "form-Control" })
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(d => d.JobDescription)
+                @Html.TextBoxFor(d => d.JobDescription, "", new { @class = "form-Control" })
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(d => d.FromDate)
+                @Html.EditorFor(d => d.FromDate, "", new { @class = "form-Control" })
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(d => d.ToDate)
+                @Html.EditorFor(d => d.ToDate, "", new { @class = "form-Control" })
+            </div>
+            <br />
+            <div style="text-align:left">
+                <input value="Save" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+
+    </div>
+}
+
