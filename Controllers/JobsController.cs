@@ -74,24 +74,53 @@ namespace CRUD_Demo_Project.Controllers
         }
 
         // GET: Jobs/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string Id)
         {
-            return View();
+            JobTableViewModel model = new JobTableViewModel();
+
+            using (CrudJobDbEntities db = new CrudJobDbEntities())
+            {
+                var oJobsTable = db.JobTables.Find(Id);
+                model.Job = oJobsTable.Job;
+                model.JobTile = oJobsTable.JobTile;
+                model.JobDescription = oJobsTable.JobDescription;
+                model.FromDate = oJobsTable.FromDate;
+                model.ToDate = oJobsTable.ToDate;
+
+            }
+
+            return View(model);
         }
 
         // POST: Jobs/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(JobTableViewModel model)
         {
+
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    using (CrudJobDbEntities db = new CrudJobDbEntities())
+                    {
+                        var oJobsTable = db.JobTables.Find(model.Job); ;
+                        oJobsTable.Job = model.Job;
+                        oJobsTable.JobTile = model.JobTile;
+                        oJobsTable.JobDescription = model.JobDescription;
+                        oJobsTable.FromDate = model.FromDate;
+                        oJobsTable.ToDate = model.ToDate;
 
-                return RedirectToAction("Index");
+                        db.Entry(oJobsTable).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+
+                    return Redirect("~/Jobs/Index");
+                }
+                return View(model);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                throw new Exception(ex.Message);
             }
         }
 

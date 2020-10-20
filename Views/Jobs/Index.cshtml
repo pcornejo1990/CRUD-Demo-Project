@@ -19,6 +19,7 @@
                 <th>Job description</th>
                 <th>From date</th>
                 <th>To date</th>
+                <th></th>
             </tr>
             @foreach (var elements in Model)
             {
@@ -28,6 +29,10 @@
                     <td>@elements.JobDescription</td>
                     <td>@elements.FromDate</td>
                     <td>@elements.ToDate</td>
+                    <td>
+                        <a class="btn btn-default" href="~/Jobs/Edit/@elements.Job">Edit</a>
+                        <a class="btn btn-danger" href="">Delete</a>
+                    </td>
                 </tr>
 
             }
