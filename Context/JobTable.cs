@@ -14,10 +14,10 @@ namespace CRUD_Demo_Project.Context
     
     public partial class JobTable
     {
-        public string Jop { get; set; }
         public string JobTile { get; set; }
         public string JobDescription { get; set; }
         public Nullable<System.DateTime> FromDate { get; set; }
         public Nullable<System.DateTime> ToDate { get; set; }
+        public string Job { get; set; }
     }
 }

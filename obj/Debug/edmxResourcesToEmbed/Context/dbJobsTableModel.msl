@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CrudJobDbModelStoreContainer" CdmEntityContainer="CrudJobDbEntities">
+    <EntitySetMapping Name="JobTables">
+      <EntityTypeMapping TypeName="CrudJobDbModel.JobTable">
+        <MappingFragment StoreEntitySet="JobTable">
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="JobTile" ColumnName="JobTile" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

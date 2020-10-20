@@ -1,0 +1,31 @@
+﻿@model List<CRUD_Demo_Project.Models.ViewModels.ListJobTableViewModel>
+@{
+    ViewBag.Title = "Jobs";
+}
+
+<h2>@ViewBag.Tile</h2>
+
+<div class = "row">
+    <div class = "col-md-5">
+        <table class=" table">
+            <tr>
+                <th>Job</th>
+                <th>Job title</th>
+                <th>Job description</th>
+                <th>From date</th>
+                <th>To date</th>
+            </tr>
+            @foreach (var elements in Model)
+            { 
+        <tr>
+            <td>@elements.Job</td>
+            <td>@elements.JobTile</td>
+            <td>@elements.JobDescription</td>
+            <td>@elements.FromDate</td>
+            <td>@elements.ToDate</td>
+        </tr>           
+            }
+        </table>
+    </div>
+</div>
+
