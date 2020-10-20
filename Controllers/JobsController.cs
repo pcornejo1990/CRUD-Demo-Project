@@ -125,9 +125,17 @@ namespace CRUD_Demo_Project.Controllers
         }
 
         // GET: Jobs/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet]
+        public ActionResult Delete(string Id)
         {
-            return View();
+            using (CrudJobDbEntities db = new CrudJobDbEntities())
+            {
+                var oJobsTable = db.JobTables.Find(Id);
+                db.JobTables.Remove(oJobsTable);
+                db.SaveChanges();
+            }
+
+            return Redirect("~/Jobs/Index");
         }
 
         // POST: Jobs/Delete/5

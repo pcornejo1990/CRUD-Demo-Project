@@ -20,10 +20,12 @@ namespace CRUD_Demo_Project.Models.ViewModels
 
         [DataType(DataType.Date)]
         [Display(Name = "From date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FromDate { get; set; }
 
         [DataType(DataType.Date)]
         [Display(Name = "To date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> ToDate { get; set; }
     }
 }
