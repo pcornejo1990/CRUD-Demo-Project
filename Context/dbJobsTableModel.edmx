@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CrudJobDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CrudJobDb.dbo.JobTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="JobTable">
+          <Key>
+            <PropertyRef Name="Jop" />
+            <PropertyRef Name="JobTile" />
+          </Key>
+          <Property Name="Jop" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="JobTile" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="JobDescription" Type="varchar" MaxLength="255" />
+          <Property Name="FromDate" Type="date" />
+          <Property Name="ToDate" Type="date" />
+        </EntityType>
+        <EntityContainer Name="CrudJobDbModelStoreContainer">
+          <EntitySet Name="JobTable" EntityType="Self.JobTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [JobTable].[Jop] AS [Jop], 
+    [JobTable].[JobTile] AS [JobTile], 
+    [JobTable].[JobDescription] AS [JobDescription], 
+    [JobTable].[FromDate] AS [FromDate], 
+    [JobTable].[ToDate] AS [ToDate]
+    FROM [dbo].[JobTable] AS [JobTable]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CrudJobDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="JobTable">
+          <Key>
+            <PropertyRef Name="Jop" />
+            <PropertyRef Name="JobTile" />
+          </Key>
+          <Property Name="Jop" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JobTile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JobDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FromDate" Type="DateTime" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="CrudJobDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="JobTables" EntityType="Self.JobTable" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CrudJobDbModelStoreContainer" CdmEntityContainer="CrudJobDbEntities">
+          <EntitySetMapping Name="JobTables">
+            <EntityTypeMapping TypeName="CrudJobDbModel.JobTable">
+              <MappingFragment StoreEntitySet="JobTable">
+                <ScalarProperty Name="Jop" ColumnName="Jop" />
+                <ScalarProperty Name="JobTile" ColumnName="JobTile" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
